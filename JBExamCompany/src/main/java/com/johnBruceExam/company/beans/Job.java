@@ -1,6 +1,6 @@
 package com.johnBruceExam.company.beans;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -9,13 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.Type;
-
 @Entity(name = "jobs")
 public class Job {
 
 	private long id;
 	private String description;
+	//@Basic
 	private Date endDate;
 
 	public Job() {
@@ -46,13 +45,17 @@ public class Job {
 	}
 
 	@Column
-	@Basic
 	public Date getEndDate() {
 		return endDate;
 	}
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+//		if (endDate != null) {
+//	        this.endDate = new Date(endDate.getTime());
+//	    } else {
+//	        this.endDate = null;
+//	    }
 	}
 
 	@Override
