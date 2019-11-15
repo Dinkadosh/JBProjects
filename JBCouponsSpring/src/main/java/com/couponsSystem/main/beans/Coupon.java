@@ -4,13 +4,20 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Entity(name = "Coupons")
+@Entity
+@Table(name = "coupons")
 public class Coupon {
 
 	public enum Category {
@@ -18,7 +25,7 @@ public class Coupon {
 	}
 
 	private long id;
-	private long companyID;
+	private Company company;
 	private Category category;
 	private String title;
 	private String description;
@@ -31,9 +38,9 @@ public class Coupon {
 	public Coupon() {
 	}
 
-	public Coupon(long companyID, Category category, String title, String description, Date startDate,
+	public Coupon(Company company, Category category, String title, String description, Date startDate,
 			Date endDate, int amount, double price, String image) {
-		this.companyID = companyID;
+		this.company = company;
 		this.category = category;
 		this.title = title;
 		this.description = description;
@@ -47,7 +54,7 @@ public class Coupon {
 
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
@@ -56,16 +63,18 @@ public class Coupon {
 		this.id = id;
 	}
 
-	@Column
-	public long getCompanyID() {
-		return companyID;
+	@MapsId
+    @OneToOne
+    @JoinColumn
+	public Company getCompany() {
+		return company;
 	}
 
-	public void setCompanyID(long companyID) {
-		this.companyID = companyID;
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
-	@Column
+	@Enumerated(EnumType.STRING)
 	public Category getCategory() {
 		return category;
 	}
@@ -139,7 +148,7 @@ public class Coupon {
 
 	@Override
 	public String toString() {
-		return "Coupon [id=" + id + ", companyID=" + companyID + ", category=" + category + ", title=" + title
+		return "Coupon [id=" + id + ", companyID=" + company.getId() + ", category=" + category + ", title=" + title
 				+ ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", amount="
 				+ amount + ", price=" + price + ", image=" + image + "]";
 	}

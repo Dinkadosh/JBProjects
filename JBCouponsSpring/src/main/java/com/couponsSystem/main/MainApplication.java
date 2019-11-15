@@ -31,8 +31,8 @@ public class MainApplication {
 		Customer cus1 = new Customer("Michael", "Zhebov", "zhebov@gmail.com", "1234");
 		Customer cus2 = new Customer("irina", "Zhebov", "irina@gmail.com", "12344");
 		
-		Coupon coupon1 = new Coupon(c1.getId(), Category.Computer, "20%", "20% discount for all PC", new Date(new java.util.Date().getTime()), new Date(new java.util.Date().getTime() + 1000000000), 10, 340.00, "url");
-		Coupon coupon2 = new Coupon(c2.getId(), Category.Sport, "30%", "30% discount for all", new Date(new java.util.Date().getTime()), new Date(new java.util.Date().getTime() + 1000000000), 5, 100.00, "url");
+		Coupon coupon1 = new Coupon(c1, Category.Computer, "20%", "20% discount for all PC", new Date(new java.util.Date().getTime()), new Date(new java.util.Date().getTime() + 1000000000), 10, 340.00, "url");
+		Coupon coupon2 = new Coupon(c2, Category.Sport, "30%", "30% discount for all", new Date(new java.util.Date().getTime()), new Date(new java.util.Date().getTime() + 1000000000), 5, 100.00, "url");
 		
 		c1.addCoupon(coupon2);
 		c2.addCoupon(coupon1);
@@ -53,6 +53,8 @@ public class MainApplication {
 		System.out.println(couponDAO.getAllCoupons());
 		System.out.println(customerDAO.getAllCustomers());
 		System.out.println(companyDAO.getAllCompanies());
+		System.out.println(c1);
+		
 }
 
 }

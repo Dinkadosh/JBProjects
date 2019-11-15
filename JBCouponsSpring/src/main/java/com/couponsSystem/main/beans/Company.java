@@ -6,10 +6,14 @@ import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-@Entity(name = "Companies")
+@Entity
+@Table(name = "companies")
 public class Company {
 
 	private long id;
@@ -28,7 +32,7 @@ public class Company {
 	}
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
@@ -63,8 +67,8 @@ public class Company {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	@OneToMany
+	
+	@Transient
 	public Collection<Coupon> getCoupons() {
 		return coupons;
 	}

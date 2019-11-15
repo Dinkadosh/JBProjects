@@ -3,17 +3,17 @@ package com.couponsSystem.main.beans;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-import org.apache.commons.logging.Log;
 
-@Entity(name = "Customers")
+@Entity
+@Table(name = "customers")
 public class Customer {
 
 	private long id;
@@ -34,7 +34,7 @@ public class Customer {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long getId() {
 		return id;
 	}
@@ -79,7 +79,7 @@ public class Customer {
 		this.password = password;
 	}
 
-	@OneToMany()
+	@ManyToMany()
 	public Collection<Coupon> getCoupons() {
 		return coupons;
 	}
