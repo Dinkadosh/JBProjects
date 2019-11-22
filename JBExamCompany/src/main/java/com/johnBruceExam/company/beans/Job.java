@@ -11,7 +11,6 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.Type;
 
-@Entity(name = "jobs")
 public class Job {
 
 	private long id;
