@@ -10,11 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 	
 	@GetMapping
-	public boolean login(@RequestParam ( name="email")String email,@RequestParam(name="password") String password) {
+	public String login(@RequestParam ( name="email")String email,@RequestParam(name="password") String password) {
 		if(email.equalsIgnoreCase("kobi@gmail.com") && password.equals("1234")) {
-			return true;
+			return "Welcome Admin";
 		}
-		return false;
+		else if(email.equalsIgnoreCase("Avi@CocaCola.com") && password.equals("ColaAvi")) {
+			return "Welcome Coca Cola company";
+		}
+		else if(email.equalsIgnoreCase("Michael@gmail.com") && password.equals("4321")) {
+			return "Welcome Michael";
+		}
+		return "User not found";
 	}
 
 }
