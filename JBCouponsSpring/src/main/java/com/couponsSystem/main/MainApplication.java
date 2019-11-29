@@ -3,8 +3,6 @@ package com.couponsSystem.main;
 import java.sql.Date;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 import com.couponsSystem.main.beans.Company;
 import com.couponsSystem.main.beans.Coupon;
@@ -13,6 +11,8 @@ import com.couponsSystem.main.beans.Customer;
 import com.couponsSystem.main.dao.CompanyDAO;
 import com.couponsSystem.main.dao.CouponDAO;
 import com.couponsSystem.main.dao.CustomerDAO;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class MainApplication {
@@ -54,7 +54,6 @@ public class MainApplication {
 		System.out.println(customerDAO.getAllCustomers());
 		System.out.println(companyDAO.getAllCompanies());
 		System.out.println(c1);
-		
 }
 
 }
